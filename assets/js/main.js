@@ -31,48 +31,55 @@ $(document).ready(function(){
   $contacto.append($eliminar);
   $fila.append($contacto);
   $contenedorContactos.append($fila);
-	 
-	 /*creamos una funcion que deje los valores del input vacios*/
+	  /*dentro de esta funcion(ya que aqui se crearon los elementos)creamos una funcion que deje los valores del input vacios*/
 	  var vaciarEntradas=function(){
 	  $nombre.val("");
 	  $telefono.val("");
-	  $email.val("");
+	  $email.val("");	    
     };
 	 /*llamamos funcion vaciar entradas*/
 	 vaciarEntradas(); 
 	 
-	 /*dentro de esta funcion(ya que aqui se crearon los elementos)agregamos la funcion de eliminar ese elemento creado dinamicamente*/
-	var eliminarContacto = function (){
-      $(this).parent().remove();
-	};
-	
-
+	 
+	 /*funcion que contabiliza el numero de contactos*/
+	 var contadorContactos = function(){
+	  var $contador = $(".contacto").length; ;
+	  var $almacenContador = $("#almacen-contador");
+	  $almacenContador.text("Cantidad de contactos:" +" "+ $contador +" "+"❤" );
+	  $contenedorContactos.prepend($almacenContador);	
+	  
+	/*agregamos la funcion de eliminar elemento*/
+	  var eliminarContacto = function (){
+       $(this).parent().remove();
+	  $almacenContador.text("Cantidad de contactos:" +" "+ --$contador +" "+"❤" );
+	  };
+		 
+		 
 	/*llamamos a la funcion de eliminar al hacer click en el modal */
 	var $btnEliminarContacto = $('.eliminar');
 	$btnEliminarContacto.click(eliminarContacto);
 	 
-	 
-	 /*funcion que contabiliza el numero de contactos*/
-	 var contadorContactos = function(){
-	  var $contactoNuevo = $(".contacto").length; 
-	  var $contador = $("#contador");
-	  $contador.text("Cantidad de contactos:" +" "+ $contactoNuevo +" "+"❤" );
-	  $contenedorContactos.prepend($contador);
-   }
+    }
 	 /*llamamos funcion de contador*/
 	 contadorContactos();
 	 
+	
+	  var $btnAgregar = $('#btnAgregar')
+	 $nombre.val("") = $btnAgregar.addClass("disabled,true");
+	 $telefono.val("") = $btnAgregar.addClass("disabled,true");
+	 $email.val("") = $btnAgregar.addClass("disabled,true");
 	 
-   };
 	
+	 
+ };
 	
-		
 /*termina funcion agregar contacto */
 	
 /*llamamos a la funcion agregar para que se ejecute*/
 	
 	var $btnAgregar = $('#btnAgregar'); 
 	$btnAgregar.click(agregarContacto);
+ 
 
 });
 
