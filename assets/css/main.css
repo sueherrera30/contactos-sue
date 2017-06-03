@@ -1,0 +1,12 @@
+body{
+	background-color: dimgrey;
+}
+
+.input-field{
+	margin-top: 8%;
+	color: hotpink;
+}
+
+.modal button{
+	margin-top: 3%;	
+}
