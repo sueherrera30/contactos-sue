@@ -64,15 +64,28 @@ $(document).ready(function(){
 	 contadorContactos();
 	 
 	
-	  var $btnAgregar = $('#btnAgregar')
+	 /* var $btnAgregar = $('#btnAgregar')
 	 $nombre.val("") = $btnAgregar.addClass("disabled,true");
 	 $telefono.val("") = $btnAgregar.addClass("disabled,true");
 	 $email.val("") = $btnAgregar.addClass("disabled,true");
 	 
-	
+	*/
 	 
  };
 	
+	var filtrarElementos = function(e){
+	e.preventDefault();
+	/*almacenamos el valor del input y lo pasamos a minusculas*/
+	var buscarContacto = $("#search").val().toLowerCase();
+	var $nombre = $('#input_text_nombre');
+	/*almacenamos a un arreglo nuevo*/
+	var contactosFiltrados = $nombre.filter(function(nombre){
+		return nombre.toLocaleLowerCase().indexOf(buscarContacto)>= 0;
+	});
+	
+	agregarContacto(contactosFiltrados);
+	
+};
 /*termina funcion agregar contacto */
 	
 /*llamamos a la funcion agregar para que se ejecute*/
